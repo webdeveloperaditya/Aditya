@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aditya\Testimonials\Api\TestimonialRepositoryInterface"
+                type="Aditya\Testimonials\Model\TestimonialRepository"/>
+    <preference for="Aditya\Testimonials\Api\Data\TestimonialInterface" type="Aditya\Testimonials\Model\Testimonial"/>
+    <preference for="Aditya\Testimonials\Api\Data\TestimonialSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Aditya\Testimonials\Model\ResourceModel\Testimonial\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aditya_testimonials</argument>
+            <argument name="resourceModel" xsi:type="string">
+                Aditya\Testimonials\Model\ResourceModel\Testimonial\Collection
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="testimonials_listing_data_source" xsi:type="string">
+                    Aditya\Testimonials\Model\ResourceModel\Testimonial\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

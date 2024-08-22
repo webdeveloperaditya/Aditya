@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Backend::top_level" title="Aditya" module="Aditya_Testimonials" sortOrder="40"
+             parent="Magento_Backend::content" resource="Magento_Backend::content"/>
+        <add id="Aditya_Testimonials::aditya_testimonials_testimonial" title="Testimonial" module="Aditya_Testimonials"
+             sortOrder="9999" resource="Magento_Backend::content" parent="Magento_Backend::top_level"
+             action="testimonials/index/details"/>
+    </menu>
+</config>

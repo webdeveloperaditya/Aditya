@@ -1,0 +1,33 @@
+<?php
+declare(strict_types=1);
+
+use Aditya\Testimonials\Block\Testimonials;
+use Magento\Framework\Escaper;
+
+/**
+ * @var Testimonials $block
+ * @var Escaper $escaper
+ */
+
+$testimonialsDetails = $block->getTestimonialsDetails();
+?>
+<?php if ($testimonialsDetails): ?>
+    <div class="testimonials-grid">
+        <?php foreach ($testimonialsDetails as $index => $item): ?>
+            <div class="testimonial-block">
+                <h2><?= $escaper->escapeHtml($item['customer_name']); ?></h2>
+                <p><?= $escaper->escapeHtml($item['testimonial_content']); ?></p>
+                <div class="rating">
+                    <?php
+                    $rating = (int)$item['rating'];
+                    for ($i = 1; $i <= 5; $i++) {
+                        echo $i <= $rating ? '<span class="star filled">&#9733;</span>' : '<span class="star">&#9734;</span>';
+                    }
+                    ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php else: ?>
+    <p>No items found.</p>
+<?php endif; ?>
